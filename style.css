@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(img/rps-background.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container {
+    width: 1000px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    margin: auto;
+    margin-top: 12%;
+}
+
+h1, h3 {
+    margin: 10px;
+}
+
+#rps-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+button:focus, input:focus {
+    outline: none;
+}
+
+button {
+    height: 180px;
+    width: 180px;
+    border: none;
+}
+
+button:active {
+    transform:scale(0.9);
+}
+
+.rock-btn {
+    color: transparent;
+    background-image: url(img/rock-ready.png);
+    background-color: transparent;
+    background-size: cover;
+}
+
+.rock-btn-won {
+    color: transparent;
+    background-image: url(img/rock-won.png);
+    background-color: transparent;
+    background-size: cover;
+}
+
+.rock-btn-lost {
+    color: transparent;
+    background-image: url(img/rock-lost.png);
+    background-color: transparent;
+    background-size: cover;
+}
+
+.paper-btn {
+    color: transparent;
+    background-image: url(img/paper-ready.png);
+    background-color: transparent;
+    background-size: cover;
+}
+
+.paper-btn-won {
+    color: transparent;
+    background-image: url(img/paper-won.png);
+    background-color: transparent;
+    background-size: cover;
+}
+
+.paper-btn-lost {
+    color: transparent;
+    background-image: url(img/paper-lost.png);
+    background-color: transparent;
+    background-size: cover;
+}
+
+.scissors-btn {
+    color: transparent;
+    background-image: url(img/scissors-ready.png);
+    background-color: transparent;
+    background-size: cover;
+}
+
+.scissors-btn-won {
+    color: transparent;
+    background-image: url(img/scissors-won.png);
+    background-color: transparent;
+    background-size: cover;
+}
+
+.scissors-btn-lost {
+    color: transparent;
+    background-image: url(img/scissors-lost.png);
+    background-color: transparent;
+    background-size: cover;
+}

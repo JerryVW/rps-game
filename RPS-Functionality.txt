@@ -1,0 +1,14 @@
+Rock, Paper, Scissors Funtionality
+
+1. Get user input and compare to computer choice.
+	- Function to take user choice.
+	- Function to have computer randomly choose its option.
+
+2. Compare player to computer choice.
+	- Function containing if/else if/ else statements comparing choices.
+	- Function(with player and computer parrameters passed in) to output with who one.
+	- function to give option to play again.
+
+3. Continue game till they choose to quit.
+	- Function to loop the game after outcome has been printed till player selects to stop playing.
+	- Outpu thanking the player for playing when selecting quit.
