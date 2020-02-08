@@ -5,8 +5,7 @@ let Scissors = document.getElementById("scissors").addEventListener("click", com
 let playerChoice;
 let computerChoice;
 
-
-function compareChoices(e) {
+function compareChoices(e, playerChoice) {
     e.preventDefault();
     playerChoice = playerSelection();
     computerChoice = computerSelection();
@@ -32,11 +31,14 @@ function compareChoices(e) {
     resetGame();
 } 
 
-
 function playerSelection() {
-    playerChose = this.innerHTML;
-    return playerChose;
+    const button = document.querySelector("button");
+    button.addEventListener("click", function(e) {
+    button = e.target.textContent;
+    return button;
+});
 }
+
 
 function computerSelection() {
     const choices = ["Rock", "Paper", "Scissors"];
@@ -44,12 +46,12 @@ function computerSelection() {
     return choices[randomSelection];
 }
 
-function won(compareChoices) {
-    if(playerSelection == "Rock"){
+function won(playerSelection) {
+    if(playerSelection() == "Rock"){
         Rock.classList.add("rock-btn-won");
-    } else if(playerSelection == "Paper") {
+    } else if(playerSelection() == "Paper") {
         Paper.classList.add("paper-btn-won");
-    } else if(playerSelection == "Scissors") {
+    } else if(playerSelection() == "Scissors") {
         Scissors.classList.add("scissors-btn-won");
     }
     console.log("Player Wins!!");
