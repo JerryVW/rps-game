@@ -2,13 +2,23 @@ let Rock = document.getElementById("rock").addEventListener("click", compareChoi
 let Paper = document.getElementById("paper").addEventListener("click", compareChoices);
 let Scissors = document.getElementById("scissors").addEventListener("click", compareChoices);
 
+let playerScore = 0;
+let computerScore = 0;
 let playerChoice;
 let computerChoice;
 
-function compareChoices(e, playerChoice) {
+function computerSelection() {
+    const choices = ["Rock", "Paper", "Scissors"];
+    const randomSelection = Math.floor(Math.random() * 3);
+    return choices[randomSelection];
+}
+
+
+function compareChoices(e) {
     e.preventDefault();
-    playerChoice = playerSelection();
+    playerChoice = e.target.textContent;
     computerChoice = computerSelection();
+    console.log(playerChoice + " " + computerChoice);
     switch (playerChoice + " " + computerChoice) {
         case "Rock Scissors":
         case "Paper Rock":
@@ -19,6 +29,7 @@ function compareChoices(e, playerChoice) {
         case "Rock Paper":
         case "Paper Scissors":
         case "Scissors Rock":
+            lost();
             console.log("Player Lost!!");
             break;
 
@@ -29,42 +40,32 @@ function compareChoices(e, playerChoice) {
             break;
     }
     resetGame();
+    return playerChoice;
 } 
 
-function playerSelection() {
-    const button = document.querySelector("button");
-    button.addEventListener("click", function(e) {
-    button = e.target.textContent;
-    return button;
-});
-}
 
 
-function computerSelection() {
-    const choices = ["Rock", "Paper", "Scissors"];
-    const randomSelection = Math.floor(Math.random() * 3);
-    return choices[randomSelection];
-}
-
-function won(playerSelection) {
-    if(playerSelection() == "Rock"){
-        Rock.classList.add("rock-btn-won");
-    } else if(playerSelection() == "Paper") {
-        Paper.classList.add("paper-btn-won");
-    } else if(playerSelection() == "Scissors") {
-        Scissors.classList.add("scissors-btn-won");
+function won(playerChoice) {
+    if(playerChoice == "Rock"){
+        document.getElementById("rock").classList.add("rock-btn-won");
+    } else if(playerChoice == "Paper") {
+        document.getElementById("paper").classList.add("paper-btn-won");
+    } else if(playerChoice == "Scissors") {
+        document.getElementById("scissors").classList.add("scissors-btn-won");
     }
     console.log("Player Wins!!");
 }
 
 function lost() {
-
+    if(computerChoice == "Paper"){
+        document.getElementById("rock").classList.add("rock-btn-lost");
+    } else if(computerChoice == "Scissors") {
+        document.getElementById("paper").classList.add("paper-btn-lost");
+    } else if(computerChoice == "Rock") {
+        document.getElementById("scissors").classList.add("scissors-btn-lost");
+    }
+    console.log("Player Lost!!");
 }
-
-function draw() {
-
-}
-
 
 function resetGame(e) {
     const inputSpace = document.getElementById("reset-game");

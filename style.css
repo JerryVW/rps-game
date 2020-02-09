@@ -52,7 +52,7 @@ button:active {
     transform:scale(0.9);
 }
 
-#rock {
+.rock-btn {
     color: transparent;
     background-image: url(img/rock-ready.png);
     background-color: transparent;
@@ -73,7 +73,7 @@ button:active {
     background-size: cover;
 }
 
-#paper {
+.paper-btn {
     color: transparent;
     background-image: url(img/paper-ready.png);
     background-color: transparent;
@@ -94,7 +94,7 @@ button:active {
     background-size: cover;
 }
 
-#scissors {
+.scissors-btn {
     color: transparent;
     background-image: url(img/scissors-ready.png);
     background-color: transparent;
