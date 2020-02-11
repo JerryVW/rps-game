@@ -5,9 +5,6 @@ let Scissors = document.getElementById("scissors").addEventListener("click", com
 let playerScore = 0;
 let computerScore = 0;
 let tie = 0;
-const playerArray = JSON.parse(localStorage.getItem("player_score")) || [];
-const computerArray = JSON.parse(localStorage.getItem("computer_score")) || [];
-const tieArray = JSON.parse(localStorage.getItem("tie_score")) || [];
 let playerChoice;
 let computerChoice;
 
@@ -57,8 +54,6 @@ function disableBtn() {
 function won() {
     playerScore++;
     document.getElementById("player_score").innerHTML = playerScore;
-    playerArray.push(playerScore++);
-    localStorage.setItem("player_score", JSON.stringify(playerArray));
     if(playerChoice == "Rock"){
         document.getElementById("rock").classList.add("rock-btn-won");
         document.getElementById("game-outcome").innerHTML = "Player Wins!! You chose Rock against Computers choice of Scissors!"
@@ -74,8 +69,6 @@ function won() {
 function lost() {
     computerScore++;
     document.getElementById("computer_score").innerHTML = computerScore;
-    computerArray.push(computerScore++);
-    localStorage.setItem("computer_score", JSON.stringify(computerArray));
     if(computerChoice == "Paper"){
         document.getElementById("rock").classList.add("rock-btn-lost");
         document.getElementById("game-outcome").innerHTML = "Computer Wins!! The Computer chose Paper against Your choice of Rock!"
@@ -92,9 +85,6 @@ function lost() {
 function draw() {
     tie++;
     document.getElementById("tie_score").innerHTML = tie;
-    tieArray.push(tie);
-    localStorage.setItem("tie_score", JSON.stringify(tieArray));
-    tieArray.push(tie++);
     document.getElementById("game-outcome").innerHTML = "The game is a Draw!! You both chose the same thing!!"
 }
 
