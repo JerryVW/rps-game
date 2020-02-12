@@ -24,13 +24,13 @@ function compareChoices(e) {
         case "Rock Scissors":
         case "Paper Rock":
         case "Scissors Paper":
-            won(playerChoice);
+            playerWins(playerChoice);
             break;
 
         case "Rock Paper":
         case "Paper Scissors":
         case "Scissors Rock":
-            lost();
+            computerWins();
             break;
 
         case "Rock Rock":
@@ -51,7 +51,7 @@ function disableBtn() {
 }
 
 
-function won() {
+function  playerWins() {
     playerScore++;
     document.getElementById("player_score").innerHTML = playerScore;
     if(playerChoice == "Rock"){
@@ -66,7 +66,7 @@ function won() {
     }
 }
 
-function lost() {
+function computerWins() {
     computerScore++;
     document.getElementById("computer_score").innerHTML = computerScore;
     if(computerChoice == "Paper"){
@@ -96,8 +96,16 @@ function resetGame(e) {
     button.textContent = "Play Again?";
     inputSpace.appendChild(button);
     button.addEventListener("click", function() {
-        window.location.reload();
-        document.querySelectorAll("button").disabled = false;
+        // window.location.reload();
+        document.getElementById("rock").className = "rock-btn";
+        document.getElementById("paper").className = "paper-btn";
+        document.getElementById("scissors").className = "scissors-btn";
+        document.getElementById("rock").disabled = false;
+        document.getElementById("paper").disabled = false;
+        document.getElementById("scissors").disabled = false;
+        inputSpace.removeChild(button);
+        let removeBtn = document.getElementById("choice-buttons");
+        removeBtn.removeChild(removeBtn.lastElementChild);
     });
     return inputSpace;
 }
@@ -111,6 +119,9 @@ function quitGame() {
     quitBtn.appendChild(button);
     button.addEventListener("click", function() {
         document.getElementById("game-outcome").innerHTML = "Thank You For Playing!!"
+        document.getElementById("rock").className = "rock-btn-won";
+        document.getElementById("paper").className = "paper-btn-won";
+        document.getElementById("scissors").className = "scissors-btn-won";
     });
-    return quitBtn;
+    return quitBtn; 
 }
