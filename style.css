@@ -50,7 +50,7 @@ h1, h3 {
 }
 
 #game-outcome {
-    width: 1000px;
+    width: 600px;
     margin: 0 auto;
     padding: 50px;
 }
@@ -63,7 +63,7 @@ h1, h3 {
 }
 
 #choice-buttons {
-    width: 650px;
+    width: 600px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
