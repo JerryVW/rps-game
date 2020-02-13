@@ -6,8 +6,8 @@ Rock, Paper, Scissors Funtionality
 
 2. Compare player to computer choice.
 	- Function containing switch statements comparing choices.
-	- Function(with player and computer choices) to output with who one or if a draw.
+	- Function(with player and computer choices) to output with who won or if a draw.
 	- function to give option to play again and option to quit.
 
 3. Continue game till they choose to quit.
-	- Output thanking the player for playing when selecting quit.
+	- Output thanking the player for playing when selecting quit and who beat who and score.
