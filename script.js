@@ -123,7 +123,7 @@ function quitGame() {
         } else if(computerScore > playerScore && computerScore > tie) {
             document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! Machine beat you with a score of  " + 
             computerScore + " to your score of  " + playerScore + "!";
-        } else if(tie > playerScore && tie > computerScore) {
+        } else if(tie > playerScore && tie > computerScore || playerScore == computerScore) {
             document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! You played a good game, but you and the machine are equal players today!";
         } 
         document.getElementById("rock").className = "rock-btn-won";
