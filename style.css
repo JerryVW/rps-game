@@ -24,7 +24,7 @@ body {
     flex-direction: column; 
     justify-content: center;
     margin: auto;
-    margin-top: 8%;
+    margin-top: 100px;
 }
 
 h1, h3 {
@@ -33,9 +33,8 @@ h1, h3 {
 
 #title {
     display: flex;
-    width: 600px;
+    width: 1000px;
     height: 80px;
-    border: 2px solid white;
     margin: 0 auto;
     justify-content: space-around;
     font-size: 50px;
@@ -43,16 +42,15 @@ h1, h3 {
 
 #score {
     display: flex;
-    width: 600px;
+    width: 1000px;
     height: 80px;
-    border: 2px solid white;
     margin: 0 auto;
     justify-content: space-around;
     font-size: 50px;
 }
 
 #game-outcome {
-    width: 600px;
+    width: 1000px;
     margin: 0 auto;
     padding: 50px;
 }
@@ -65,7 +63,7 @@ h1, h3 {
 }
 
 #choice-buttons {
-    width: 600px;
+    width: 650px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;

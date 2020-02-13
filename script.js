@@ -8,13 +8,11 @@ let tie = 0;
 let playerChoice;
 let computerChoice;
 
-
 function computerSelection() {
     const choices = ["Rock", "Paper", "Scissors"];
     const randomSelection = Math.floor(Math.random() * 3);
     return choices[randomSelection];
 }
-
 
 function compareChoices(e) {
     e.preventDefault();
@@ -49,7 +47,6 @@ function disableBtn() {
     document.getElementById("paper").disabled = true;
     document.getElementById("scissors").disabled = true;
 }
-
 
 function  playerWins() {
     playerScore++;
@@ -104,8 +101,9 @@ function resetGame(e) {
         document.getElementById("paper").disabled = false;
         document.getElementById("scissors").disabled = false;
         inputSpace.removeChild(button);
-        let removeBtn = document.getElementById("choice-buttons");
-        removeBtn.removeChild(removeBtn.lastElementChild);
+        const removeBtn = document.getElementById("game-over");
+        const parentEl = removeBtn.parentNode;
+        parentEl.removeChild(removeBtn);
     });
     return inputSpace;
 }
@@ -114,11 +112,20 @@ function quitGame() {
     const quitBtn = document.getElementById("quit-game");
     const button = document.createElement("button");
     button.type = "reset";
+    button.id = "game-over";
     button.className = "quit-game";
     button.textContent = "Quit Game";
     quitBtn.appendChild(button);
     button.addEventListener("click", function() {
-        document.getElementById("game-outcome").innerHTML = "Thank You For Playing!!"
+        if(playerScore > computerScore && playerScore > tie){
+            document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! Player wins with a score of " + 
+            playerScore + " to the machines score of  " + computerScore + "!";
+        } else if(computerScore > playerScore && computerScore > tie) {
+            document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! Machine beat you with a score of  " + 
+            computerScore + " to your score of  " + playerScore + "!";
+        } else if(tie > playerScore && tie > computerScore) {
+            document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! You played a good game, but you and the machine are equal players today!";
+        } 
         document.getElementById("rock").className = "rock-btn-won";
         document.getElementById("paper").className = "paper-btn-won";
         document.getElementById("scissors").className = "scissors-btn-won";
