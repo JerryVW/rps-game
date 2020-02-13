@@ -4,7 +4,7 @@ Built a Rock, Paper, Scissors Game with HTML, CSS, Vanilla Javascript nad Flexbo
 
 You can check it out [here](https://jerryvw.github.io/rps-game/)
 
-<img src="img/RPS_creenshot.png">
+<img src="img/RPS_Screenshot.png">
 
 <h2>Summary</h2> 
 
