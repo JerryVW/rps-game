@@ -1,46 +1,51 @@
-let Rock = document.getElementById("rock").addEventListener("click", compareChoices);
-let Paper = document.getElementById("paper").addEventListener("click", compareChoices);
-let Scissors = document.getElementById("scissors").addEventListener("click", compareChoices);
-
 let playerScore = 0;
 let computerScore = 0;
 let tie = 0;
-let playerChoice;
-let computerChoice;
+document.getElementById("rock").addEventListener("click", compareChoices);
+document.getElementById("paper").addEventListener("click", compareChoices);
+document.getElementById("scissors").addEventListener("click", compareChoices);
 
-function computerSelection() {
+function compareChoices(e) {
+    e.preventDefault();
+    let playerChoice = e.target.textContent;
+    let computerChoice = getComputerSelection();
+
+    disableBtn();
+    createResetGameButton();
+    createQuitGameButton();
+
+    if (playerChoice === computerChoice) {
+        draw();
+        return;
+    }
+
+    switch (playerChoice) {
+        case "Rock":
+            if(computerChoice === "Scissors") {
+                return computerWins(playerChoice, computerChoice);
+            }
+            break;
+
+        case "Paper":
+            if(computerChoice === "Rock") {
+                return computerWins(playerChoice, computerChoice);
+            }
+            break;
+
+        case "Scissors":
+            if(computerChoice === "Paper") {
+                return computerWins(playerChoice, computerChoice);
+            }
+            break;
+    }
+    playerWins(playerChoice, computerChoice);
+} 
+
+function getComputerSelection() {
     const choices = ["Rock", "Paper", "Scissors"];
     const randomSelection = Math.floor(Math.random() * 3);
     return choices[randomSelection];
 }
-
-function compareChoices(e) {
-    e.preventDefault();
-    playerChoice = e.target.textContent;
-    computerChoice = computerSelection();
-    switch (playerChoice + " " + computerChoice) {
-        case "Rock Scissors":
-        case "Paper Rock":
-        case "Scissors Paper":
-            playerWins(playerChoice);
-            break;
-
-        case "Rock Paper":
-        case "Paper Scissors":
-        case "Scissors Rock":
-            computerWins();
-            break;
-
-        case "Rock Rock":
-        case "Paper Paper":
-        case "Scissors Scissors":
-            draw();
-            break;
-    }
-    disableBtn();
-    resetGame();
-    quitGame();
-} 
 
 function disableBtn() {
     document.getElementById("rock").disabled = true;
@@ -48,35 +53,20 @@ function disableBtn() {
     document.getElementById("scissors").disabled = true;
 }
 
-function  playerWins() {
+function  playerWins(playerChoice, computerChoice) {
     playerScore++;
     document.getElementById("player_score").innerHTML = playerScore;
-    if(playerChoice == "Rock"){
-        document.getElementById("rock").classList.add("rock-btn-won");
-        document.getElementById("game-outcome").innerHTML = "Player Wins!! You chose Rock against Computers choice of Scissors!"
-    } else if(playerChoice == "Paper") {
-        document.getElementById("paper").classList.add("paper-btn-won");
-        document.getElementById("game-outcome").innerHTML = "Player Wins!! You chose Paper against Computers choice of Rock!"
-    } else if(playerChoice == "Scissors") {
-        document.getElementById("scissors").classList.add("scissors-btn-won");
-        document.getElementById("game-outcome").innerHTML = "Player Wins!! You chose Scissors against Computers choice of Paper!"
-    }
+
+    document.getElementById(`${playerChoice.toLowerCase()}`).classList.add(`${playerChoice.toLowerCase()}-btn-won`);
+    document.getElementById("game-outcome").innerHTML = `Player Wins!! You chose ${playerChoice} against Computers choice of ${computerChoice}!`;
 }
 
-function computerWins() {
+function computerWins(computerChoice, playerChoice) {
     computerScore++;
     document.getElementById("computer_score").innerHTML = computerScore;
-    if(computerChoice == "Paper"){
-        document.getElementById("rock").classList.add("rock-btn-lost");
-        document.getElementById("game-outcome").innerHTML = "Computer Wins!! The Computer chose Paper against Your choice of Rock!"
-    } else if(computerChoice == "Scissors") {
-        document.getElementById("paper").classList.add("paper-btn-lost");
-        document.getElementById("game-outcome").innerHTML = "Computer Wins!! The Computer chose Scissors against Your choice of Paper!"
-    } else if(computerChoice == "Rock") {
-        document.getElementById("scissors").classList.add("scissors-btn-lost");
-        document.getElementById("game-outcome").innerHTML = "Computer Wins!! The Computer chose Rock against Your choice of Scissors!"
-    }
-    
+
+    document.getElementById(`${computerChoice.toLowerCase()}`).classList.add(`${computerChoice.toLowerCase()}-btn-lost`);
+    document.getElementById("game-outcome").innerHTML = `Computer Wins!! Computer chose ${computerChoice} against your choice of ${playerChoice}!`;
 }
 
 function draw() {
@@ -85,7 +75,7 @@ function draw() {
     document.getElementById("game-outcome").innerHTML = "The game is a Draw!! You both chose the same thing!!"
 }
 
-function resetGame(e) {
+function createResetGameButton(e) {
     const inputSpace = document.getElementById("reset-game");
     const button = document.createElement("button");
     button.type = "reset";
@@ -93,22 +83,26 @@ function resetGame(e) {
     button.textContent = "Play Again?";
     inputSpace.appendChild(button);
     button.addEventListener("click", function() {
-        // window.location.reload();
-        document.getElementById("rock").className = "rock-btn";
-        document.getElementById("paper").className = "paper-btn";
-        document.getElementById("scissors").className = "scissors-btn";
-        document.getElementById("rock").disabled = false;
-        document.getElementById("paper").disabled = false;
-        document.getElementById("scissors").disabled = false;
+        const rockButton = document.getElementById("rock");
+        rockButton.className = "rock-btn";
+        rockButton.disabled = false;
+
+        const paperButton = document.getElementById("paper");
+        paperButton.className = "paper-btn";
+        paperButton.disabled = false;
+
+        const scissorsButton = document.getElementById("scissors"); 
+        scissorsButton.className = "scissors-btn";
+        scissorsButton.disabled = false;
+
         inputSpace.removeChild(button);
         const removeBtn = document.getElementById("game-over");
         const parentEl = removeBtn.parentNode;
         parentEl.removeChild(removeBtn);
     });
-    return inputSpace;
 }
 
-function quitGame() {
+function createQuitGameButton() {
     const quitBtn = document.getElementById("quit-game");
     const button = document.createElement("button");
     button.type = "reset";
@@ -123,12 +117,19 @@ function quitGame() {
         } else if(computerScore > playerScore && computerScore > tie) {
             document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! Machine beat you with a score of  " + 
             computerScore + " to your score of  " + playerScore + "!";
-        } else if(tie > playerScore && tie > computerScore || playerScore == computerScore) {
+        } else if(tie > playerScore && tie > computerScore || playerScore == computerScore && tie == playerScore && tie == computerScore) {
             document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! You played a good game, but you and the machine are equal players today!";
         } 
         document.getElementById("rock").className = "rock-btn-won";
         document.getElementById("paper").className = "paper-btn-won";
         document.getElementById("scissors").className = "scissors-btn-won";
-    });
-    return quitBtn; 
+
+        playerScore = 0;
+        computerScore = 0;
+        tie = 0;
+
+        document.getElementById("player_score").innerHTML = "0";
+        document.getElementById("computer_score").innerHTML = "0";
+        document.getElementById("tie_score").innerHTML = "0";
+    }); 
 }
