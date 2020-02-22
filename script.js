@@ -99,6 +99,8 @@ function createResetGameButton(e) {
         const removeBtn = document.getElementById("game-over");
         const parentEl = removeBtn.parentNode;
         parentEl.removeChild(removeBtn);
+
+        document.getElementById("game-outcome").innerHTML = ""
     });
 }
 
