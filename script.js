@@ -20,21 +20,21 @@ function compareChoices(e) {
     }
 
     switch (playerChoice) {
+        case "Scissors":
+            if(computerChoice === "Rock") {
+                return computerWins(computerChoice, playerChoice);
+            }
+            break;
+
         case "Rock":
-            if(computerChoice === "Scissors") {
-                return computerWins(playerChoice, computerChoice);
+            if(computerChoice === "Paper") {
+                return computerWins(computerChoice, playerChoice);
             }
             break;
 
         case "Paper":
-            if(computerChoice === "Rock") {
-                return computerWins(playerChoice, computerChoice);
-            }
-            break;
-
-        case "Scissors":
-            if(computerChoice === "Paper") {
-                return computerWins(playerChoice, computerChoice);
+            if(computerChoice === "Scissors") {
+                return computerWins(computerChoice, playerChoice);
             }
             break;
     }
@@ -65,7 +65,7 @@ function computerWins(computerChoice, playerChoice) {
     computerScore++;
     document.getElementById("computer_score").innerHTML = computerScore;
 
-    document.getElementById(`${computerChoice.toLowerCase()}`).classList.add(`${computerChoice.toLowerCase()}-btn-lost`);
+    document.getElementById(`${playerChoice.toLowerCase()}`).classList.add(`${playerChoice.toLowerCase()}-btn-lost`);
     document.getElementById("game-outcome").innerHTML = `Computer Wins!! Computer chose ${computerChoice} against your choice of ${playerChoice}!`;
 }
 
