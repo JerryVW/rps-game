@@ -58,7 +58,7 @@ function  playerWins(playerChoice, computerChoice) {
     document.getElementById("player_score").innerHTML = playerScore;
 
     document.getElementById(`${playerChoice.toLowerCase()}`).classList.add(`${playerChoice.toLowerCase()}-btn-won`);
-    document.getElementById("game-outcome").innerHTML = `Player Wins!! You chose ${playerChoice} against Computers choice of ${computerChoice}!`;
+    document.getElementById("game-outcome").innerHTML = `Player Wins!! You chose ${playerChoice} against Computer's choice of ${computerChoice}!`;
 }
 
 function computerWins(computerChoice, playerChoice) {
