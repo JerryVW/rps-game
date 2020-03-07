@@ -114,10 +114,10 @@ function createQuitGameButton() {
     quitBtn.appendChild(button);
     button.addEventListener("click", function() {
         if(playerScore > computerScore && playerScore > tie || playerScore == tie && playerScore > computerScore){
-            document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! Player wins with a score of " + 
-            playerScore + " to the machines score of  " + computerScore + "!";
+            document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! You win with a score of " + 
+            playerScore + " to the machine's score of  " + computerScore + "!";
         } else if(computerScore > playerScore && computerScore > tie || computerScore == tie && computerScore > playerScore) {
-            document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! Machine beat you with a score of  " + 
+            document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! The machine beat you with a score of  " + 
             computerScore + " to your score of  " + playerScore + "!";
         } else if(tie > playerScore && tie > computerScore || playerScore == computerScore && tie == playerScore && tie == computerScore) {
             document.getElementById("game-outcome").innerHTML = "Thank You For Playing!! You played a good game, but you and the machine are equal players today!";
